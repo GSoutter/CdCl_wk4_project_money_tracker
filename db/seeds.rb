@@ -18,7 +18,23 @@ merchant3.save()
 
 
 
+tag1 = Tag.new({
+  'name'=> 'Groceries',
+  'active' => true,
+  'img_url' => './images/bag.jpg'})
+tag1.save()
 
+tag2 = Tag.new({
+  'name'=> 'Health',
+  'active' => true,
+  'img_url' => './images/heart.jpg'})
+tag2.save()
+
+tag3 = Tag.new({
+  'name'=> 'Tech',
+  'active' => true,
+  'img_url' => './images/wires.jpg'})
+tag3.save()
 
 
 binding.pry
