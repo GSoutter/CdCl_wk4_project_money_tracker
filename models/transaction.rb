@@ -46,5 +46,11 @@ class Transaction
   end
 
 
+  def Transaction.all()
+    sql = "SELECT * FROM transactions"
+    transactions = SqlRunner.run(sql)
+    return transactions.map {|tran| Transaction.new(tran)}
+  end
+
 
 end #class end
