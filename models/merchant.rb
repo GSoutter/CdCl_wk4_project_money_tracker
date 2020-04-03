@@ -4,12 +4,13 @@ require_relative('../db/sql_runner')
 
 class Merchant
 
-  attr_accessor :name, :img_url
+  attr_accessor :name, :img_url, :active
   attr_reader :id
 
   def initialize(options)
     @name = options['name']
     @img_url = options['img_url']
+    @active = options['active']
 
     @id = options['id'].to_i if options['id']
   end
@@ -18,13 +19,13 @@ class Merchant
   def save()
     sql = "INSERT INTO merchants
     (
-      name, img_url
+      name, active, img_url
     )VALUES(
-      $1, $2
+      $1, $2, $3
     )
     RETURNING id
     "
-    values = [@name, @img_url]
+    values = [@name, @active, @img_url]
     @id = SqlRunner.run(sql, values).first()['id'].to_i
   end
 
@@ -35,13 +36,13 @@ class Merchant
 
   def update()
     sql = "UPDATE merchants SET
-    ( name, img_url
+    (  name, active, img_url
     )=(
-      $1, $2
+      $1, $2, $3
     )
-    WHERE id = $3
+    WHERE id = $4
     "
-    values = [@name, @img_url, @id]
+    values = [@name, @active, @img_url, @id]
     SqlRunner.run(sql, values)
   end
 

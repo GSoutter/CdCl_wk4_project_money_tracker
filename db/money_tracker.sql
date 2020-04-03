@@ -6,6 +6,7 @@ CREATE TABLE merchants
 (
     id SERIAL PRIMARY KEY,
     name VARCHAR,
+    active BOOLEAN,
     img_url TEXT
 );
 
