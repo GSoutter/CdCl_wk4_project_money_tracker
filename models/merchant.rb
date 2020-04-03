@@ -33,6 +33,19 @@ class Merchant
     SqlRunner.run(sql)
   end
 
+  def update()
+    sql = "UPDATE merchants SET
+    ( name, img_url
+    )=(
+      $1, $2
+    )
+    WHERE id = $3
+    "
+    values = [@name, @img_url, @id]
+    SqlRunner.run(sql, values)
+  end
+
+
 
 
 
