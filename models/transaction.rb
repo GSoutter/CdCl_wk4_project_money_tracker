@@ -66,6 +66,12 @@ class Transaction
     return Tag.new(tag)
   end
 
+  def delete()
+    sql = "DELETE FROM transactions WHERE id =$1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
 
 
 
