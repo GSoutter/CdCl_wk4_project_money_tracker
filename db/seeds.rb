@@ -3,7 +3,7 @@ require_relative( "../models/tag.rb" )
 require_relative( "../models/transaction.rb" )
 require("pry-byebug")
 
-# Merchant.delete_all()
+Merchant.delete_all()
 # Tag.delete_all()
 # Transaction.delete_all()
 
