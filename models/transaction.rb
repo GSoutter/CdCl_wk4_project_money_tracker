@@ -52,5 +52,23 @@ class Transaction
     return transactions.map {|tran| Transaction.new(tran)}
   end
 
+  def merchant()
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [@merchant_id]
+    merchant = SqlRunner.run(sql, values).first()
+    return Merchant.new(merchant)
+  end
+
+  def tag()
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [@tag_id]
+    tag = SqlRunner.run(sql, values).first()
+    return Tag.new(tag)
+  end
+
+
+
+
+
 
 end #class end
