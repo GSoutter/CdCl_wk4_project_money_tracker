@@ -46,6 +46,13 @@ class Tag
   end
 
 
+  def Tag.all()
+    sql = "SELECT * FROM tags"
+    tags = SqlRunner.run(sql)
+    return tags.map {|tags| Tag.new(tags)}
+  end
+
+
 
 
 end #class end
