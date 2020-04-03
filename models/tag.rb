@@ -27,6 +27,12 @@ class Tag
   end
 
 
+  def Tag.delete_all()
+    sql = "DELETE FROM tags"
+    SqlRunner.run(sql)
+  end
+
+
 
 
 end #class end
