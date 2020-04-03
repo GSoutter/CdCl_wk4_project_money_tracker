@@ -20,7 +20,7 @@ CREATE TABLE tags
 CREATE TABLE transactions
 (
     id SERIAL PRIMARY KEY,
-    transcation_timestamp TIMESTAMP,
+    transaction_timestamp TIMESTAMP,
     amount DECIMAL,
     merchant_id INT references merchants(id),
     tag_id INT references tags(id)
