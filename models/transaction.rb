@@ -7,7 +7,7 @@ class Transaction
 
   def initialize(options)
     @transaction_timestamp = options['transaction_timestamp']
-    @amount = options['amount']
+    @amount = options['amount'].to_f
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
 
@@ -70,6 +70,10 @@ class Transaction
     sql = "DELETE FROM transactions WHERE id =$1"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def Transaction.total_spend(transactions)
+    return transactions.reduce(0.0){|sum, tran| sum + tran.amount}
   end
 
 

@@ -1,25 +1,23 @@
 <header>
   <h1>All transactions</h1>
-  <h2>Total spend: </h2>
+  <h2>Total spend: <%=Transaction.total_spend(@transactions)%> </h2>
+  <a href="/transactions/new"> Add another transaction</a>
 </header>
 
-<% for transaction in @transactions %>
+
 <table>
-    <tr>
-      <td> Date </td>
-      <td><%= transaction.transaction_timestamp %></td>
-    </tr>
-    <tr>
-      <td> Amount </td>
-      <td><%= transaction.amount %></td>
-    </tr>
-    <tr>
-      <td> Merchant </td>
-      <td><%= transaction.merchant.name %></td>
-    </tr>
-    <tr>
-      <td> Tag </td>
-      <td><%= transaction.tag.name %></td>
-    </tr>
+  <tr>
+    <td> Amount </td>
+    <td> Merchant </td>
+    <td> Tag </td>
+    <td> Date </td>
+  </tr>
+  <% for transaction in @transactions %>
+  <tr>
+    <td>£<%= transaction.amount %></td>
+    <td><%= transaction.merchant.name %></td>
+    <td><%= transaction.tag.name %></td>
+    <td><%= transaction.transaction_timestamp %></td>
+  </tr>
+  <% end %>
 </table>
-<% end %>
