@@ -3,14 +3,14 @@
   <h2>Total spend: <%=Transaction.total_spend(@transactions)%> </h2>
   <a href="/transactions/new"> Add another transaction</a>
 </header>
-
+<hr>
 
 <table>
   <tr>
-    <td> Amount </td>
-    <td> Merchant </td>
-    <td> Tag </td>
-    <td> Date </td>
+    <th> Amount </th>
+    <th> Merchant </th>
+    <th> Tag </th>
+    <th> Date </th>
   </tr>
   <% for transaction in @transactions %>
   <tr>
