@@ -1,5 +1,11 @@
 require('sinatra')
-require('sinatra/contrib')
-require_relative( "./models/merchant.rb" )
-require_relative( "./models/tag.rb" )
-require_relative( "./models/transaction.rb" )
+require('sinatra/contrib/all')
+
+require_relative('./controllers/merchants_controller.rb')
+require_relative('./controllers/tags_controller.rb')
+require_relative('./controllers/transactions_controller.rb')
+also_reload('./models/*')
+
+get '/' do
+  erb(:index)
+end

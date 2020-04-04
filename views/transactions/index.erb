@@ -1,0 +1,25 @@
+<header>
+  <h1>All transactions</h1>
+  <h2>Total spend: </h2>
+</header>
+
+<% for transaction in @transactions %>
+<table>
+    <tr>
+      <td> Date </td>
+      <td><%= transaction.transaction_timestamp %></td>
+    </tr>
+    <tr>
+      <td> Amount </td>
+      <td><%= transaction.amount %></td>
+    </tr>
+    <tr>
+      <td> Merchant </td>
+      <td><%= transaction.merchant.name %></td>
+    </tr>
+    <tr>
+      <td> Tag </td>
+      <td><%= transaction.tag.name %></td>
+    </tr>
+</table>
+<% end %>
