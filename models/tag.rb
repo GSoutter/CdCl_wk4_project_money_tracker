@@ -7,8 +7,13 @@ class Tag
 
   def initialize(options)
     @name = options['name']
-    @active = options['active']
     @img_url = options['img_url']
+    if options['active'] != nil
+      @active = options['active']
+    else
+      @active = true
+    end
+
 
     @id = options['id'].to_i if options['id']
   end
