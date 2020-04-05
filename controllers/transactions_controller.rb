@@ -9,7 +9,7 @@ require_relative( "../models/transaction.rb" )
 also_reload('../models/*')
 
 
-get '/transactions' do
+get '/transactions' do #shows all transacations page
   @transactions = Transaction.all
   erb(:"transactions/index")
 end
@@ -39,5 +39,12 @@ end
 post '/transactions/:id' do #post edit transaction data to database
   transaction = Transaction.new(params)
   transaction.update
+  redirect to("/transactions")
+end
+
+post '/transactions/:id/delete' do
+  id = params['id']
+  transaction = Transaction.find_by_id(id)
+  transaction.delete()
   redirect to("/transactions")
 end
