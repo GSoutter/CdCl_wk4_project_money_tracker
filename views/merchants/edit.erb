@@ -1,0 +1,19 @@
+ <header>
+  <h1>Edit Merchant: <%=@merchant.name%></h1>
+</header>
+
+<hr>
+
+<form action="/merchants/<%=@merchant.id%>" method="post">
+  <label>
+    Name: <input type="text" name="name" value="">
+  </label>
+  <br>
+  <label>
+    Image URL: <input type="text" name="img_url" value="">
+  </label>
+  <br>
+  <input class="btn btn--action" type='submit' value="submit changes">
+
+
+</form>
