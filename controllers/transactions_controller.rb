@@ -16,16 +16,16 @@ end
 
 
 get '/transactions/new' do   #show new transactions page
-  @merchants = Merchant.all
-  @tags = Tag.all
+  @merchants = Merchant.all_active
+  @tags = Tag.all_active
   erb(:"transactions/new")
 end
 
 get '/transactions/:id/edit' do #show edit specific transactions page
   id = params['id'].to_i
   @transaction = Transaction.find_by_id(id)
-  @merchants = Merchant.all
-  @tags = Tag.all
+  @merchants = Merchant.all_active
+  @tags = Tag.all_active
   erb(:"transactions/edit")
 end
 

@@ -62,6 +62,12 @@ class Merchant
     return Merchant.new(merchant)
   end
 
+  def Merchant.all_active()
+    sql = "SELECT * FROM merchants WHERE active = 't'"
+    merchants = SqlRunner.run(sql)
+    return merchants.map {|merc| Merchant.new(merc)}
+  end
+
 
 
 

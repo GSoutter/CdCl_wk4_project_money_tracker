@@ -64,5 +64,10 @@ class Tag
     return Tag.new(tag)
   end
 
+  def Tag.all_active()
+    sql = "SELECT * FROM tags WHERE active = 't'"
+    tags = SqlRunner.run(sql)
+    return tags.map {|tag| Tag.new(tag)}
+  end
 
 end #class end
