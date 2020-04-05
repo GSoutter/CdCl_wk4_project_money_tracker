@@ -76,6 +76,12 @@ class Transaction
     return transactions.reduce(0.0){|sum, tran| sum + tran.amount}
   end
 
+  def Transaction.find_by_id(id)
+    sql = "SELECT * FROM transactions WHERE id = $1"
+    values = [id]
+    transaction = SqlRunner.run(sql, values).first()
+    return Transaction.new(transaction)
+  end
 
 
 

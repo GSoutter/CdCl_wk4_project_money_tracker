@@ -21,9 +21,23 @@ get '/transactions/new' do   #show new transactions page
   erb(:"transactions/new")
 end
 
+get '/transactions/:id/edit' do #show edit specific transactions page
+  id = params['id'].to_i
+  @transaction = Transaction.find_by_id(id)
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb(:"transactions/edit")
+end
 
-post '/transactions' do #post new merchant data to database
+
+post '/transactions' do #post new transaction data to database
   transaction = Transaction.new(params)
   transaction.save
+  redirect to("/transactions")
+end
+
+post '/transactions/:id' do #post edit transaction data to database
+  transaction = Transaction.new(params)
+  transaction.update
   redirect to("/transactions")
 end
