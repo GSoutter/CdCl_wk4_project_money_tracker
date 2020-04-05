@@ -1,0 +1,41 @@
+  <header>
+  <h1>Add Transaction</h1>
+</header>
+
+<hr>
+
+<form action="/transactions" method="post">
+
+  <label>
+    Time: <input type="datetime-local" name="transaction_timestamp" value="">
+  </label>
+  <br>
+  <label>
+    Amount: <input type="number" name="amount" value="">
+  </label>
+  <br>
+
+  <label>
+    Merchant:
+    <select class="select-transaction" name="merchant_id">
+      <% for merchant in @merchants%>
+        <option value=<%= merchant.id %>> <%= merchant.name %> </option>
+      <% end %>
+    </select>
+  </label>
+  <br>
+
+  <label>
+    Tag:
+    <select class="select-transaction" name="tag_id">
+      <% for tag in @tags%>
+        <option value=<%= tag.id %>> <%= tag.name %> </option>
+      <% end %>
+    </select>
+  </label>
+  <br>
+
+  <input class="btn btn--action" type='submit' value="add">
+
+
+</form>

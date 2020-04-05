@@ -56,7 +56,7 @@ transaction2.save()
 
 
 transaction3 = Transaction.new({
-  'transaction_timestamp' => '2019-04-01 11:00',
+  'transaction_timestamp' => '2020-04-02T12:00',
   'amount' => '1000',
   'merchant_id' => merchant3.id,
   'tag_id' => tag3.id

@@ -25,7 +25,6 @@ get '/tags/:id/edit' do #show edit specific tag page
 end
 
 
-
 post '/tags' do #post new Tag to database
   tag = Tag.new(params)
   tag.save
