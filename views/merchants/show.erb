@@ -16,7 +16,7 @@
  <% for transaction in @transactions %>
  <tr>
    <td>£<%= transaction.amount %></td>
-   <td><%= transaction.tag.name %></td>
+   <td> <a href="/tags/<%= transaction.tag_id %>"> <%= transaction.tag.name %> </a></td>
    <td><%= transaction.transaction_timestamp %></td>
    <td> <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
    <td>

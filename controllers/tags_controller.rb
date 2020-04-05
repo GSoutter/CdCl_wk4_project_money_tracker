@@ -24,6 +24,13 @@ get '/tags/:id/edit' do #show edit specific tag page
   erb(:"tags/edit")
 end
 
+get '/tags/:id' do   #show single tag page
+  id = params['id'].to_i
+  @tag = Tag.find_by_id(id)
+  @transactions = @tag.transactions
+  erb(:"tags/show")
+end
+
 
 post '/tags' do #post new Tag to database
   tag = Tag.new(params)
