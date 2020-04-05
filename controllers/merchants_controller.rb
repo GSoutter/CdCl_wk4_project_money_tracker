@@ -24,6 +24,12 @@ get '/merchants/:id/edit' do #show edit specific merchant page
   erb(:"merchants/edit")
 end
 
+get '/merchants/:id' do   #show single merchant page
+  id = params['id'].to_i
+  @merchant = Merchant.find_by_id(id)
+  @transactions = @merchant.transactions
+  erb(:"merchants/show")
+end
 
 
 post '/merchants' do #post new merchant data to database

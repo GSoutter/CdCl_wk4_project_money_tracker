@@ -68,6 +68,13 @@ class Merchant
     return merchants.map {|merc| Merchant.new(merc)}
   end
 
+  def transactions
+    sql = "SELECT * FROM transactions WHERE merchant_id = $1"
+    values = [@id]
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map {|tran| Transaction.new(tran)}
+  end
+
 
 
 

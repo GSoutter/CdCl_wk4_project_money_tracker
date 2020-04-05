@@ -1,0 +1,29 @@
+<header>
+ <h1>All transactions for <%=@merchant.name%></h1>
+ <h2>Total spent at <%=@merchant.name%>: £<%=Transaction.total_spend(@transactions)%> </h2>
+ <a href="/transactions/new"> Add another transaction</a>
+</header>
+<hr>
+
+<table>
+ <tr>
+   <th> Amount </th>
+   <th> Tag </th>
+   <th> Date </th>
+   <th> Edit </th>
+   <th> Delete </th>
+ </tr>
+ <% for transaction in @transactions %>
+ <tr>
+   <td>£<%= transaction.amount %></td>
+   <td><%= transaction.tag.name %></td>
+   <td><%= transaction.transaction_timestamp %></td>
+   <td> <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
+   <td>
+     <form action="/transactions/<%=transaction.id%>/delete" method="post">
+         <button type= "submit">Delete Transaction</button>
+     </form>
+   </td>
+ </tr>
+ <% end %>
+</table>
