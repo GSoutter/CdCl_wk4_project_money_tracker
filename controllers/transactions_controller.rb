@@ -11,6 +11,7 @@ also_reload('../models/*')
 
 get '/transactions' do #shows all transacations page
   @transactions = Transaction.all
+  @months = Transaction.months_batch
   erb(:"transactions/index")
 end
 
@@ -27,6 +28,14 @@ get '/transactions/:id/edit' do #show edit specific transactions page
   @merchants = Merchant.all
   @tags = Tag.all
   erb(:"transactions/edit")
+end
+
+get '/transactions/monthfilter/:year/:month' do #show filter_month page
+  @year = params['year'].to_i
+  @month = params['month'].to_i
+  @transactions = Transaction.filter_month(@year, @month)
+  @months = Transaction.months_batch
+  erb(:"transactions/monthfilter")
 end
 
 

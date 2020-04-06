@@ -1,0 +1,41 @@
+<header>
+ <h1>All transactions in <%="%02d" % @month%>-<%=@year%></h1>
+ <h2>Total spend in month: <%=Transaction.total_spend(@transactions)%> </h2>
+ <a href="/transactions/new"> Add another transaction</a>
+</header>
+<hr>
+<article class="month_filter">
+ <label for="start">Fiter month:</label>
+   <table>
+     <% for month in @months %>
+         <td> <a href="/transactions/monthfilter/<%= month[0] %>/<%= month[1] %>"> <%= month[0].to_s + "-" + "%02d" % month[1] %> </a></td>
+     <% end %>
+   </table>
+</article>
+
+
+
+<table>
+ <tr>
+   <th> Amount </th>
+   <th> Merchant </th>
+   <th> Tag </th>
+   <th> Date </th>
+   <th> Edit </th>
+   <th> Delete </th>
+ </tr>
+ <% for transaction in @transactions %>
+ <tr>
+   <td>£<%= transaction.amount %></td>
+   <td> <a href="/merchants/<%= transaction.merchant_id %>"> <%= transaction.merchant.name %> </a></td>
+   <td> <a href="/tags/<%= transaction.tag_id %>"> <%= transaction.tag.name %> </a></td>
+   <td><%= transaction.transaction_timestamp %></td>
+   <td> <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
+   <td>
+     <form action="/transactions/<%=transaction.id%>/delete" method="post">
+         <button type= "submit">Delete Transaction</button>
+     </form>
+   </td>
+ </tr>
+ <% end %>
+</table>
