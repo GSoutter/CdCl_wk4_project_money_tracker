@@ -17,7 +17,8 @@
 
 <label>
   Merchant:
-  <select class="select-transaction" name="merchant_id">
+  <select class="select-transaction" name="merchant_id" value="<%=@transaction.merchant.name%>" >
+    <option value=<%=@transaction.merchant.id%>> <%=@transaction.merchant.name%> </option>
     <% for merchant in @merchants%>
       <option value=<%= merchant.id %>> <%= merchant.name %> </option>
     <% end %>
@@ -27,7 +28,8 @@
 
 <label>
   Tag:
-  <select class="select-transaction" name="tag_id">
+  <select class="select-transaction" name="tag_id" value=<%=@transaction.tag.name%> >
+    <option value=<%=@transaction.tag.id%>> <%=@transaction.tag.name%> </option>
     <% for tag in @tags%>
       <option value=<%= tag.id %>> <%= tag.name %> </option>
     <% end %>

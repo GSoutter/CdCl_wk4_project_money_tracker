@@ -63,12 +63,14 @@ class TransactionTest < Minitest::Test
 
 
     @transaction3 = Transaction.new({
-      'transaction_timestamp' => '2019-04-01 11:00',
+      'transaction_timestamp' => '2019-03-01 11:00',
       'amount' => '1000',
       'merchant_id' => merchant3.id,
       'tag_id' => tag3.id
       })
     @transaction3.save()
+
+
 
     @transaction_array = Transaction.all()
   end
@@ -80,11 +82,18 @@ class TransactionTest < Minitest::Test
     assert_equal(1120.70, Transaction.total_spend(@transaction_array))
   end
 
-  def test_Transaction_html_tim()
+  def test_Transaction_html_time()
+    #given a transaction time to be converted to html compatible format.
+
+    #when i run Transaction.total_spend(array)
+    assert_equal("2019-03-01T11:00", @transaction3.time_html)
+  end
+
+  def test_Transaction_months_batch()
     #given an array of transactions
 
     #when i run Transaction.total_spend(array)
-    assert_equal("2019-04-01T11:00", @transaction3.time_html)
+    assert_equal([[2019, 4], [2019, 3]], Transaction.months_batch)
   end
 
 

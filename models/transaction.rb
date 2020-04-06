@@ -89,15 +89,6 @@ class Transaction
     return Transaction.new(transaction)
   end
 
-  def Transaction.filter_month(year, month)
-    sql = "SELECT * FROM transactions
-    WHERE transaction_timestamp >= DATE($1, $2, 1)
-    AND transaction_timestamp < DATEADD(month, 1, Date($1, $2, 1))
-    "
-    values = [year, month]
-    transactions = SqlRunner.run(sql, values)
-    return transactions.map {|tran| Transaction.new(tran)}
-  end
 
   def time_html()
     d = DateTime.parse(@transaction_timestamp)
@@ -105,6 +96,28 @@ class Transaction
     date_string = "#{d.year}-#{"%02d" % d.month}-#{"%02d" % d.day}T#{"%02d" % d.hour}:#{"%02d" % d.min}"
     return date_string
   end
+
+  def Transaction.months_batch
+    transactions = Transaction.all
+    months_array = []
+    for transaction in transactions
+      datetime = DateTime.parse(transaction.transaction_timestamp)
+      months_array.push([datetime.year, datetime.month])
+    end
+    return months_array.uniq
+  end
+
+  def Transaction.filter_month(year, month)
+    sql = "SELECT * FROM transactions
+    WHERE EXTRACT(YEAR FROM transaction_timestamp) = $1
+    AND EXTRACT(MONTH FROM transaction_timestamp) = $2
+    "
+    values = [year, month]
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map {|tran| Transaction.new(tran)}
+  end
+
+
 
 
 
