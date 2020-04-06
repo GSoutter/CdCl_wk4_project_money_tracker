@@ -7,11 +7,11 @@
 <form action="/transactions/<%=@transaction.id%>" method="post">
 
 <label>
-  Time: <input type="datetime-local" name="transaction_timestamp" value="2018-12-31T12:00">
+  Time: <input type="datetime-local" name="transaction_timestamp" value=<%=@transaction.time_html%>>
 </label>
 <br>
 <label>
-  Amount: <input type="number" name="amount" value="<%=@transaction.amount%>" min= 0>
+  Amount: <input type="number" name="amount" value="<%=@transaction.amount%>" min= 0.00 step=0.01>
 </label>
 <br>
 

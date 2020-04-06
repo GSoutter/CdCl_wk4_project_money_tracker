@@ -99,6 +99,13 @@ class Transaction
     return transactions.map {|tran| Transaction.new(tran)}
   end
 
+  def time_html()
+    d = DateTime.parse(@transaction_timestamp)
+
+    date_string = "#{d.year}-#{"%02d" % d.month}-#{"%02d" % d.day}T#{"%02d" % d.hour}:#{"%02d" % d.min}"
+    return date_string
+  end
+
 
 
 
