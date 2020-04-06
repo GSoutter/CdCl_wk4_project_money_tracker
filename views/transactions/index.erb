@@ -1,7 +1,15 @@
  <header>
   <h1>All transactions</h1>
   <h2>Total spend: <%=Transaction.total_spend(@transactions)%> </h2>
+  <h4>Budget: <%=@budget%> </h4>
+  <%if @budget > Transaction.total_spend(@transactions).to_f%>
+    <h4>You are <%=(Transaction.total_spend(@transactions)- @budget).round(2) %> under budget</h4>
+  <%else%>
+    <h4>You are <%=(Transaction.total_spend(@transactions)- @budget).round(2)%> over budget</h4>
+  <%end%>
   <a href="/transactions/new"> Add another transaction</a>
+  <br>
+  <a href="/budget/edit"> Edit Budget</a>
 </header>
 <hr>
 <article class="month_filter">

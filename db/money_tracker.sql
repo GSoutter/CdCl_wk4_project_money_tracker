@@ -33,3 +33,6 @@ CREATE TABLE budgets
   name VARCHAR(255),
   budget DECIMAL
 );
+
+INSERT INTO budgets (name, budget) VALUES ('Overall', 1000);
+INSERT INTO budgets (name, budget) VALUES ('Monthly', 300);

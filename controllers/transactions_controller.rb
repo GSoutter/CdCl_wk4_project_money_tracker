@@ -6,12 +6,14 @@ require( 'pry-byebug' )
 require_relative( '../models/merchant.rb' )
 require_relative( "../models/tag.rb" )
 require_relative( "../models/transaction.rb" )
+require_relative( "../models/budget.rb" )
 also_reload('../models/*')
 
 
 get '/transactions' do #shows all transacations page
   @transactions = Transaction.all
   @months = Transaction.months_batch
+  @budget = Budget.budget('Overall')
   erb(:"transactions/index")
 end
 
@@ -35,9 +37,9 @@ get '/transactions/monthfilter/:year/:month' do #show filter_month page
   @month = params['month'].to_i
   @transactions = Transaction.filter_month(@year, @month)
   @months = Transaction.months_batch
+  @budget = Budget.budget('monthly')
   erb(:"transactions/monthfilter")
 end
-
 
 post '/transactions' do #post new transaction data to database
   transaction = Transaction.new(params)
