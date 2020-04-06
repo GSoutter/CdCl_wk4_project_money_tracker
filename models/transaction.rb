@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require('date')
 
 class Transaction
 
@@ -6,7 +7,11 @@ class Transaction
   attr_reader :id
 
   def initialize(options)
-    @transaction_timestamp = options['transaction_timestamp']
+    if options['transaction_timestamp'] == nil or options['transaction_timestamp'] == ""
+      @transaction_timestamp = DateTime.now
+    else
+      @transaction_timestamp = options['transaction_timestamp']
+    end
     @amount = options['amount'].to_f
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
@@ -82,6 +87,16 @@ class Transaction
     values = [id]
     transaction = SqlRunner.run(sql, values).first()
     return Transaction.new(transaction)
+  end
+
+  def Transaction.filter_month(year, month)
+    sql = "SELECT * FROM transactions
+    WHERE transaction_timestamp >= DATE($1, $2, 1)
+    AND transaction_timestamp < DATEADD(month, 1, Date($1, $2, 1))
+    "
+    values = [year, month]
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map {|tran| Transaction.new(tran)}
   end
 
 

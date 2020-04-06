@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS merchants;
+DROP TABLE IF EXISTS budgets;
 
 CREATE TABLE merchants
 (
@@ -25,4 +26,10 @@ CREATE TABLE transactions
     amount DECIMAL,
     merchant_id INT references merchants(id),
     tag_id INT references tags(id)
+);
+
+CREATE TABLE budgets
+(
+  name VARCHAR(255),
+  budget DECIMAL
 );
