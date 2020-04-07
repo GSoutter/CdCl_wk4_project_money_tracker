@@ -1,9 +1,21 @@
+
+
+<section class= "subhead-section-flex">
+<article class="spend-header">
+  <h2>Total spend in <%="%02d" % @month%>-<%=@year%>: £<%=Transaction.total_spend(@transactions)%> </h2>
+  <a href="/transactions/new"> Add another transaction</a>
+</article>
+</section>
+
 <header>
- <h1>Transactions in <%="%02d" % @month%>-<%=@year%></h1>
- <h2>Total spend in month: <%=Transaction.total_spend(@transactions)%> </h2>
- <a href="/transactions/new"> Add another transaction</a>
+ <h1  id = "transaction-header">Transactions in <%="%02d" % @month%>-<%=@year%></h1>
 </header>
+
 <hr>
+
+
+
+
 <article class="month_filter">
  <label for="start">Filter month:</label>
    <table>
@@ -12,7 +24,6 @@
      <% end %>
    </table>
 </article>
-
 
 
 <table class = "tracker-table">

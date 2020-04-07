@@ -1,7 +1,14 @@
+
+
+<section class= "subhead-section-flex">
+<article class="spend-header">
+  <h2>Total spent at <%=@merchant.name%>: £<%=Transaction.total_spend(@transactions)%> </h2>
+  <a href="/transactions/new"> Add another transaction</a>
+</article>
+</section>
+
 <header>
- <h1>All transactions for <%=@merchant.name%></h1>
- <h2>Total spent at <%=@merchant.name%>: £<%=Transaction.total_spend(@transactions)%> </h2>
- <a href="/transactions/new"> Add another transaction</a>
+  <h1 id = "transaction-header">All transactions for <%=@merchant.name%></h1>
 </header>
 <hr>
 

@@ -1,5 +1,5 @@
 <header>
-  <h1>All Merchants</h1>
+  <h1  id = "transaction-header">All Merchants</h1>
   <a href="/merchants/new"> Add another merchant</a>
 </header>
 <hr>
@@ -7,14 +7,12 @@
 <table class = "tracker-table">
   <tr>
     <th> Name </th>
-    <th> Image URL </th>
     <th> Active </th>
     <th> Edit </th>
   </tr>
   <% for merchant in @merchants %>
   <tr>
     <td>  <%= merchant.name %>  </td>
-    <td>  <%= merchant.img_url %>  </td>
     <td>  <%= merchant.active %>  </td>
     <td> <a href="/merchants/<%=merchant.id%>/edit"> Edit </a> </td>
   </tr>
