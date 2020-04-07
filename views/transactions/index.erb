@@ -1,19 +1,32 @@
- <header>
-  <h1>All transactions</h1>
-  <h2>Total spend: <%=Transaction.total_spend(@transactions)%> </h2>
-  <h4>Budget: <%=@budget%> </h4>
-  <%if @budget > Transaction.total_spend(@transactions).to_f%>
-    <h4>You are <%=(Transaction.total_spend(@transactions)- @budget).round(2) %> under budget</h4>
-  <%else%>
-    <h4>You are <%=(Transaction.total_spend(@transactions)- @budget).round(2)%> over budget</h4>
-  <%end%>
+
+
+
+<section class= "subhead-section-flex">
+
+  <article class="spend-header">
+  <h2>Total spend: £<%=Transaction.total_spend(@transactions)%> </h2>
   <a href="/transactions/new"> Add another transaction</a>
-  <br>
-  <a href="/budget/edit"> Edit Budget</a>
+  </article>
+
+  <aside class="budget-aside">
+    <h2>Budget: £<%=@budget%> </h2>
+    <%if @budget > Transaction.total_spend(@transactions).to_f%>
+      <p>You are £<%=(Transaction.total_spend(@transactions)- @budget).round(2) %> under budget</p>
+    <%else%>
+      <p>You are £<%=(Transaction.total_spend(@transactions)- @budget).round(2)%> over budget</p>
+    <%end%>
+    <a href="/budget/edit"> Edit Budget</a>
+  </aside>
+
+</section>
+
+<header >
+ <h1 id = "transaction-header">All transactions</h1>
 </header>
+
 <hr>
 <article class="month_filter">
-  <label for="start">Fiter month:</label>
+  <label for="start">Filter month:</label>
     <table>
       <% for month in @months %>
           <td> <a href="/transactions/monthfilter/<%= month[0] %>/<%= month[1] %>"> <%= month[0].to_s + "-" + "%02d" % month[1] %> </a></td>
@@ -23,7 +36,7 @@
 
 
 
-<table>
+<table class = "tracker-table">
   <tr>
     <th> Amount </th>
     <th> Merchant </th>
@@ -34,11 +47,11 @@
   </tr>
   <% for transaction in @transactions %>
   <tr>
-    <td>£<%= transaction.amount %></td>
-    <td> <a href="/merchants/<%= transaction.merchant_id %>"> <%= transaction.merchant.name %> </a></td>
-    <td> <a href="/tags/<%= transaction.tag_id %>"> <%= transaction.tag.name %> </a></td>
-    <td><%= transaction.transaction_timestamp %></td>
-    <td> <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
+    <td class = "table-number">  £<%= transaction.amount %></td>
+    <td>  <a href="/merchants/<%= transaction.merchant_id %>"> <%= transaction.merchant.name %> </a></td>
+    <td>  <a href="/tags/<%= transaction.tag_id %>"> <%= transaction.tag.name %> </a></td>
+    <td>  <%= transaction.transaction_timestamp %></td>
+    <td>  <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
     <td>
       <form action="/transactions/<%=transaction.id%>/delete" method="post">
           <button type= "submit">Delete Transaction</button>

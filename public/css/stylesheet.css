@@ -1,0 +1,151 @@
+/* https://paletton.com/#uid=33c190kltl-aXwcglqKqBguvWb4 */
+
+body {
+  background-color: #246E5F;
+  padding-left: 16px;
+}
+
+nav {
+  background-color: #43887B;
+  color: black;
+  padding: 20px 10px 20px 0px;
+}
+
+nav a{
+  padding: 6px;
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 20px;
+
+  border-style: solid;
+  border-color: #837516;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+.flex-splash{
+  width: 240px;
+  height: 240px;
+  border-radius: 100%;
+  background-color: #D5C768;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  padding: 30px;
+
+}
+
+#splash-header {
+  display: flex;
+
+  font-family: "Times New Roman", Times, serif;
+}
+
+.subhead-section-flex{
+  display: flex;
+  margin: -0px 0px 0px 0px;
+}
+
+.spend-header, .budget-aside{
+  padding: 10px 10px 5px 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  margin: 10px;
+  border-color: #837516;
+  background-color: #43887B;
+
+
+}
+
+.budget-aside h2{
+  margin:0px;
+
+}
+
+.spend-header h2{
+  margin:0px 0px 52px 0px;
+
+}
+
+#transaction-header {
+    margin:0px;
+    padding: 10px 10px 5px 10px;
+}
+
+.month_filter {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+
+}
+.month_filter table{
+  display: flex;
+  flex: wrap;
+}
+
+.month_filter td{
+  border-style: outset;
+  border-width: 2px;
+  border-radius: 3px;
+
+  color: black;
+  padding: 0px 5px 0px 5px;
+  margin: 20px;
+  font-family: "Courier New", Courier, monospace;
+  background-color: #43887B;
+}
+.month_filter a{
+  color: black;
+}
+
+.tracker-table th {
+
+  font-family: "Courier New", Courier, monospace;
+  padding: 10px 10px 5px 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 1px;
+  margin: 10px;
+  border-color: #837516;
+  background-color: #43887B;
+}
+
+/* .tracker-table td {
+  font-family: "Courier New", Courier, monospace;
+  padding: 2px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1px;
+  margin: 2px;
+  border-color: #837516;
+  background-color: #43887B;
+} */
+
+.tracker-table tr {
+  font-family: "Courier New", Courier, monospace;
+  padding: 2px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 1px;
+  margin: 2px;
+  border-color: #837516;
+  background-color: #43887B;
+}
+
+.table-number{
+  text-align:right;
+}
+
+.tracker-table a {
+  color: black;
+}
+.tracker-table button{
+  background-color: grey;
+  font-weight: bold
+}

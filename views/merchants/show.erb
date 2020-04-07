@@ -5,7 +5,7 @@
 </header>
 <hr>
 
-<table>
+<table class = "tracker-table">
  <tr>
    <th> Amount </th>
    <th> Tag </th>
@@ -15,7 +15,7 @@
  </tr>
  <% for transaction in @transactions %>
  <tr>
-   <td>£<%= transaction.amount %></td>
+   <td class = "table-number">£<%= transaction.amount %></td>
    <td> <a href="/tags/<%= transaction.tag_id %>"> <%= transaction.tag.name %> </a></td>
    <td><%= transaction.transaction_timestamp %></td>
    <td> <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
