@@ -3,27 +3,6 @@ require_relative('../db/sql_runner')
 class Budget
 
 
-  attr_accessor :budget
-  attr_reader :name
-
-  def initialize(options)
-    @name = options['name']
-    @budget = options['budget']
-  end
-
-
-  def Budget.update(name)
-    sql = "UPDATE budgets SET
-    (  budget
-    )=(
-      $1
-    )
-    WHERE name = $2
-    "
-    values = [@budget, @name]
-    SqlRunner.run(sql, values)
-  end
-
   def Budget.budget(name)
     sql = "SELECT budget FROM budgets WHERE name = $1"
     values = [name]
@@ -36,6 +15,12 @@ class Budget
     sql = "UPDATE budgets SET budget = $1 WHERE name = $2"
     values = [budget, name]
     SqlRunner.run(sql, values)
+  end
+
+  def Budget.all()
+    sql = "SELECT name FROM budgets"
+    names = SqlRunner.run(sql)
+    return names.map {|name| name['name']}
   end
 
 

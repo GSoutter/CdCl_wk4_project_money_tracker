@@ -149,3 +149,12 @@ nav a{
   background-color: grey;
   font-weight: bold
 }
+
+#over-budget {
+  /* background-color: red;
+  font-weight: bold */
+  border-style: solid;
+  border-weight: 4px;
+  border-color: red;
+
+}

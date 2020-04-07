@@ -37,9 +37,10 @@ get '/transactions/monthfilter/:year/:month' do #show filter_month page
   @month = params['month'].to_i
   @transactions = Transaction.filter_month(@year, @month)
   @months = Transaction.months_batch
-  @budget = Budget.budget('monthly')
+  @budget = Budget.budget('monthly').to_f
   erb(:"transactions/monthfilter")
 end
+
 
 post '/transactions' do #post new transaction data to database
   transaction = Transaction.new(params)

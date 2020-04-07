@@ -5,6 +5,16 @@
   <h2>Total spend in <%="%02d" % @month%>-<%=@year%>: £<%=Transaction.total_spend(@transactions)%> </h2>
   <a href="/transactions/new"> Add another transaction</a>
 </article>
+<aside class="budget-aside">
+  <h2>Monthly Budget: £<%=@budget%> </h2>
+  <%if @budget > Transaction.total_spend(@transactions).to_f%>
+    <p>You are £<%=(@budget - Transaction.total_spend(@transactions)).round(2) %> under budget</p>
+  <%else%>
+    <p id = "over-budget">You are £<%=(Transaction.total_spend(@transactions)- @budget).round(2)%> over budget</p>
+  <%end%>
+  <a href="/budgets/edit"> Edit Budget</a>
+</aside>
+
 </section>
 
 <header>
