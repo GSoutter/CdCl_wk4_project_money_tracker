@@ -85,17 +85,18 @@ class TransactionTest < Minitest::Test
   def test_Transaction_html_time()
     #given a transaction time to be converted to html compatible format.
 
-    #when i run Transaction.total_spend(array)
+    #when i run .time_html I get a time that works with defaults
+    #then i get the time in a format compatible
     assert_equal("2019-03-01T11:00", @transaction3.time_html)
   end
 
   def test_Transaction_months_batch()
-    #given an array of transactions
+    #given an database of transactions to be batched into months
 
-    #when i run Transaction.total_spend(array)
+    #when i run Transaction.months_batch.
+    #then i get an array of each month
     assert_equal([[2019, 4], [2019, 3]], Transaction.months_batch)
   end
-
 
 
 

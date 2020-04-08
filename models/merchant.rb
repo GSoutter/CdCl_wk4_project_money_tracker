@@ -10,11 +10,13 @@ class Merchant
   def initialize(options)
     @name = options['name']
     @img_url = options['img_url']
+
     if options['active'] != nil
       @active = options['active']
     else
       @active = true
     end
+
     @id = options['id'].to_i if options['id']
   end
 
@@ -68,15 +70,11 @@ class Merchant
     return merchants.map {|merc| Merchant.new(merc)}
   end
 
-  def transactions
+  def transactions()
     sql = "SELECT * FROM transactions WHERE merchant_id = $1"
     values = [@id]
     transactions = SqlRunner.run(sql, values)
     return transactions.map {|tran| Transaction.new(tran)}
   end
-
-
-
-
 
 end #class end

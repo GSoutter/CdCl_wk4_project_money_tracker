@@ -4,17 +4,17 @@
 <section class= "subhead-section-flex">
 
   <article class="spend-header">
-  <h2>Total spend: £<%=Transaction.total_spend(@transactions)%> </h2>
-  <a href="/transactions/new"> Add another transaction</a>
+    <h2>Total spend: £<%=Transaction.total_spend(@transactions)%> </h2>
+    <a href="/transactions/new"> Add another transaction</a>
   </article>
 
   <aside class="budget-aside">
     <h2>Budget: £<%=@budget%> </h2>
-    <%if @budget > Transaction.total_spend(@transactions).to_f%>
-      <p>You are £<%=(@budget - Transaction.total_spend(@transactions)).round(2) %> under budget</p>
-    <%else%>
-      <p id = "over-budget">You are £<%=(Transaction.total_spend(@transactions)- @budget).round(2)%> over budget</p>
-    <%end%>
+      <%if @budget > Transaction.total_spend(@transactions).to_f%>
+        <p>You are £<%=(@budget - Transaction.total_spend(@transactions)).round(2) %> under budget</p>
+      <%else%>
+        <p id = "over-budget">You are £<%=(Transaction.total_spend(@transactions)- @budget).round(2)%> over budget</p>
+      <%end%>
     <a href="/budgets/edit"> Edit Budget</a>
   </aside>
 
@@ -45,18 +45,20 @@
     <th> Edit </th>
     <th> Delete </th>
   </tr>
+
   <% for transaction in @transactions %>
-  <tr>
-    <td class = "table-number">  £<%= transaction.amount %></td>
-    <td>  <a href="/merchants/<%= transaction.merchant_id %>"> <%= transaction.merchant.name %> </a></td>
-    <td>  <a href="/tags/<%= transaction.tag_id %>"> <%= transaction.tag.name %> </a></td>
-    <td>  <%= transaction.transaction_timestamp %></td>
-    <td>  <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
-    <td>
-      <form action="/transactions/<%=transaction.id%>/delete" method="post">
-          <button type= "submit">Delete Transaction</button>
-      </form>
-    </td>
-  </tr>
+    <tr>
+      <td class = "table-number">  £<%= transaction.amount %></td>
+      <td>  <a href="/merchants/<%= transaction.merchant_id %>"> <%= transaction.merchant.name %> </a></td>
+      <td>  <a href="/tags/<%= transaction.tag_id %>"> <%= transaction.tag.name %> </a></td>
+      <td>  <%= transaction.transaction_timestamp %></td>
+      <td>  <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
+      <td>
+        <form action="/transactions/<%=transaction.id%>/delete" method="post">
+            <button type= "submit">Delete Transaction</button>
+        </form>
+      </td>
+    </tr>
   <% end %>
+  
 </table>

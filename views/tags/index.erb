@@ -5,18 +5,19 @@
 <hr>
 
 <table class = "tracker-table">
+
   <tr>
     <th> Name </th>
-    <!-- <th> Image URL </th> -->
     <th> Active </th>
     <th> Edit </th>
   </tr>
+
   <% for tag in @tags %>
-  <tr>
-    <td>  <%= tag.name %>  </td>
-    <!-- <td>  <%= tag.img_url %>  </td> -->
-    <td>  <%= tag.active %>  </td>
-    <td> <a href="/tags/<%=tag.id%>/edit"> Edit </a> </td>
-  </tr>
+    <tr>
+      <td>  <%= tag.name %>  </td>
+      <td>  <%= tag.active %>  </td>
+      <td> <a href="/tags/<%=tag.id%>/edit"> Edit </a> </td>
+    </tr>
   <% end %>
+  
 </table>

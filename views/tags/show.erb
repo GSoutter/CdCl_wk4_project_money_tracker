@@ -1,16 +1,17 @@
 
 
 <section class= "subhead-section-flex">
-<article class="spend-header">
-  <h2>Total spent on <%=@tag.name%>: £<%=Transaction.total_spend(@transactions)%> </h2>
-  <a href="/transactions/new"> Add another transaction</a>
-</article>
+
+  <article class="spend-header">
+    <h2>Total spent on <%=@tag.name%>: £<%=Transaction.total_spend(@transactions)%> </h2>
+    <a href="/transactions/new"> Add another transaction</a>
+  </article>
+
 </section>
 
 <header>
   <h1 id = "transaction-header">All transactions for <%=@tag.name%></h1>
 </header>
-
 <hr>
 
 <table class = "tracker-table">
@@ -21,17 +22,19 @@
    <th> Edit </th>
    <th> Delete </th>
  </tr>
+
  <% for transaction in @transactions %>
- <tr>
-   <td class = "table-number">£<%= transaction.amount %></td>
-   <td> <a href="/merchants/<%= transaction.merchant_id %>"> <%= transaction.merchant.name %> </a></td>
-   <td><%= transaction.transaction_timestamp %></td>
-   <td> <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
-   <td>
-     <form action="/transactions/<%=transaction.id%>/delete" method="post">
-         <button type= "submit">Delete Transaction</button>
-     </form>
-   </td>
- </tr>
+   <tr>
+     <td class = "table-number">£<%= transaction.amount %></td>
+     <td> <a href="/merchants/<%= transaction.merchant_id %>"> <%= transaction.merchant.name %> </a></td>
+     <td> <%= transaction.transaction_timestamp %></td>
+     <td> <a href="/transactions/<%=transaction.id%>/edit"> Edit </a> </td>
+     <td>
+       <form action="/transactions/<%=transaction.id%>/delete" method="post">
+           <button type= "submit">Delete Transaction</button>
+       </form>
+     </td>
+   </tr>
  <% end %>
+
 </table>

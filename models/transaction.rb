@@ -3,19 +3,20 @@ require('date')
 
 class Transaction
 
-  attr_accessor :transaction_timestamp, :amount, :merchant_id, :tag_id, :budget
+  attr_accessor :transaction_timestamp, :amount, :merchant_id, :tag_id
   attr_reader :id
 
   def initialize(options)
+
     if options['transaction_timestamp'] == nil or options['transaction_timestamp'] == ""
       @transaction_timestamp = DateTime.now
     else
       @transaction_timestamp = options['transaction_timestamp']
     end
+
     @amount = options['amount'].to_f
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
-    @budget = 1200.00
 
     @id = options['id'].to_i if options['id']
   end

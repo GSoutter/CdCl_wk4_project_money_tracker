@@ -116,16 +116,7 @@ nav a{
   background-color: #43887B;
 }
 
-/* .tracker-table td {
-  font-family: "Courier New", Courier, monospace;
-  padding: 2px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 1px;
-  margin: 2px;
-  border-color: #837516;
-  background-color: #43887B;
-} */
+
 
 .tracker-table tr {
   font-family: "Courier New", Courier, monospace;
@@ -151,8 +142,6 @@ nav a{
 }
 
 #over-budget {
-  /* background-color: red;
-  font-weight: bold */
   border-style: solid;
   border-weight: 4px;
   border-color: red;

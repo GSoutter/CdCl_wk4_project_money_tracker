@@ -1,43 +1,42 @@
 <header>
 <h1>Edit Transaction</h1>
 </header>
-
 <hr>
 
 <form action="/transactions/<%=@transaction.id%>" method="post">
 
-<label>
-  Time: <input type="datetime-local" name="transaction_timestamp" value=<%=@transaction.time_html%>>
-</label>
-<br>
-<label>
-  Amount: <input type="number" name="amount" value="<%=@transaction.amount%>" min= 0.00 step=0.01>
-</label>
-<br>
+  <label>
+    Time: <input type="datetime-local" name="transaction_timestamp" value=<%=@transaction.time_html%>>
+  </label>
+  <br>
 
-<label>
-  Merchant:
-  <select class="select-transaction" name="merchant_id" value="<%=@transaction.merchant.name%>" >
-    <option value=<%=@transaction.merchant.id%>> <%=@transaction.merchant.name%> </option>
-    <% for merchant in @merchants%>
-      <option value=<%= merchant.id %>> <%= merchant.name %> </option>
-    <% end %>
-  </select>
-</label>
-<br>
+  <label>
+    Amount: <input type="number" name="amount" value="<%=@transaction.amount%>" min= 0.00 step=0.01>
+  </label>
+  <br>
 
-<label>
-  Tag:
-  <select class="select-transaction" name="tag_id" value=<%=@transaction.tag.name%> >
-    <option value=<%=@transaction.tag.id%>> <%=@transaction.tag.name%> </option>
-    <% for tag in @tags%>
-      <option value=<%= tag.id %>> <%= tag.name %> </option>
-    <% end %>
-  </select>
-</label>
-<br>
+  <label>
+    Merchant:
+    <select class="select-transaction" name="merchant_id" value="<%=@transaction.merchant.name%>" >
+      <option value=<%=@transaction.merchant.id%>> <%=@transaction.merchant.name%> </option>
+      <% for merchant in @merchants%>
+        <option value=<%= merchant.id %>> <%= merchant.name %> </option>
+      <% end %>
+    </select>
+  </label>
+  <br>
 
-<input class="btn btn--action" type='submit' value="submit changes">
+  <label>
+    Tag:
+    <select class="select-transaction" name="tag_id" value=<%=@transaction.tag.name%> >
+      <option value=<%=@transaction.tag.id%>> <%=@transaction.tag.name%> </option>
+      <% for tag in @tags%>
+        <option value=<%= tag.id %>> <%= tag.name %> </option>
+      <% end %>
+    </select>
+  </label>
+  <br>
 
+  <input class="btn btn--action" type='submit' value="submit changes">
 
 </form>

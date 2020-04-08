@@ -1,25 +1,28 @@
+
  <header>
   <h1  id = "transaction-header">Edit Merchant: <%=@merchant.name%></h1>
 </header>
-
 <hr>
 
 <form action="/merchants/<%=@merchant.id%>" method="post">
+
   <label>
     Name: <input type="text" name="name" value="<%=@merchant.name%>">
   </label>
   <br>
+
   <label>
     Image URL: <input type="text" name="img_url" value="<%=@merchant.img_url%>">
   </label>
   <br>
+
   <label>
     Active:
     yes <input type="Radio" name="active" value="t" checked>
     no <input type="Radio" name="active" value="f">
   </label>
   <br>
-  <input class="btn btn--action" type='submit' value="submit changes">
 
+  <input class="btn btn--action" type='submit' value="submit changes">
 
 </form>

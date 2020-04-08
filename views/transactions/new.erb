@@ -1,7 +1,6 @@
-  <header>
+<header>
   <h1>Add Transaction</h1>
 </header>
-
 <hr>
 
 <form action="/transactions" method="post">
@@ -10,6 +9,7 @@
     Time: <input type="datetime-local" name="transaction_timestamp" value="">(leave blank for current time)
   </label>
   <br>
+
   <label>
     Amount: <input type="number" name="amount" value="" min= 0.00 step =0.01>
   </label>
@@ -36,6 +36,5 @@
   <br>
 
   <input class="btn btn--action" type='submit' value="add">
-
-
+  
 </form>

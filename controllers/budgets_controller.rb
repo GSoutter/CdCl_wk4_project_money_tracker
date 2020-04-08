@@ -15,7 +15,7 @@ get '/budgets/edit' do #show edit budget page
   erb(:"budgets/edit")
 end
 
-post '/budgets/' do
+post '/budgets/' do #post edit budget page
   name = params['name']
   budget = params['budget'].to_f
   Budget.budget_set(name, budget)

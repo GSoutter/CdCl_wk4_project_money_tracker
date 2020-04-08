@@ -54,7 +54,7 @@ post '/transactions/:id' do #post edit transaction data to database
   redirect to("/transactions")
 end
 
-post '/transactions/:id/delete' do
+post '/transactions/:id/delete' do #posts delete require
   id = params['id']
   transaction = Transaction.find_by_id(id)
   transaction.delete()
